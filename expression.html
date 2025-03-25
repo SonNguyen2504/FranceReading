@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0055A4;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0055A4;
+            color: white;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #EF4135;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">📖 Lectures en Français</div>
+    <div class="container">
+        <h1>Expressions verbales</h1>
+        <h2 id="title">Titre de l'Article</h2> <!-- Tiêu đề bài đọc -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Expressions verbales</th>
+                    <th>Sens</th>
+                </tr>
+            </thead>
+            <tbody id="vocab-list">
+                <!-- Dữ liệu sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+        <button class="btn" onclick="goBack()">⬅ Trở về</button>
+    </div>
+
+    <script>
+        // Dữ liệu bài đọc và từ vựng (fix cứng)
+        const articles = {
+            1: { title: "Vacances : les Français arrivent-ils à déconnecter du travail ?" },
+            2: { title: "Prendre des vacances améliore la productivité" },
+            3: { title: "Running : est-ce efficace de ne courir que le dimanche ?" }
+        };
+
+        const vocabData = {
+            1: [
+                { express: "jeter un coup d’œil à", sens: "liếc nhìn, xem lướt qua" },
+                { express: "parvenir à", sens: "đạt được, làm được" },
+                { express: "être autorisé à", sens: "được phép làm gì" },
+                { express: "couper sa boîte mail", sens: "tắt hòm thư" },
+                { express: "avoir besoin de", sens: "cần thiết" },
+                { express: "être en congés", sens: "đang trong kỳ nghỉ" },
+                { express: "rendre plus floue", sens: "làm mờ ranh giới" },
+                { express: "dire-le à votre boss", sens: "hãy nói điều đó với sếp bạn" }
+            ],
+            2: [
+                { express: "prendre des vacances", sens: "nghỉ phép" },
+                { express: "recharger ses batteries", sens: "nạp lại năng lượng" },
+                { express: "se focaliser sur", sens: "tập trung vào" },
+                { express: "accorder des vacances", sens: "cho phép nghỉ" },
+                { express: "être plus performant", sens: "hiệu quả hơn" },
+                { express: "bénéficier de", sens: "hưởng lợi từ" },
+                { express: "améliorer la santé", sens: "cải thiện sức khoẻ" },
+                { express: "se refléter sur", sens: "phản ánh vào" }
+            ],
+            3: [
+                { express: "faire le point", sens: "đánh giá lại" },
+                { express: "entretenir sa silhouette", sens: "duy trì vóc dáng" },
+                { express: "se muscler", sens: "tăng cơ" },
+                { express: "faire du sport", sens: "tập thể thao" },
+                { express: "s’octroyer une séance", sens: "tự dành cho mình một buổi tập" },
+                { express: "alterner entre", sens: "luân phiên giữa" },
+                { express: "se remettre aux foulées", sens: "quay lại với bước chạy" },
+                { express: "contracter ses abdos", sens: "siết cơ bụng" }
+            ]
+        };
+
+        // Lấy ID bài đọc từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        // Hiển thị tiêu đề bài đọc
+        if (articles[articleId]) {
+            document.getElementById('title').innerText = articles[articleId].title;
+        } else {
+            document.getElementById('title').innerText = "Article non trouvé";
+        }
+
+        // Hiển thị danh sách từ vựng
+        const vocabList = document.getElementById("vocab-list");
+        if (vocabData[articleId]) {
+            vocabData[articleId].forEach((item, index) => {
+                let row = `<tr>
+                <td>${index + 1}</td>
+                <td>${item.express}</td>
+                <td>${item.sens}</td>
+            </tr>`;
+                vocabList.innerHTML += row;
+            });
+        } else {
+            vocabList.innerHTML = "<tr><td colspan='3'>Aucune donnée disponible.</td></tr>";
+        }
+
+        // Nút trở về
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .article-content {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="article-content">
+        Les vacances, c'est fait pour se reposer et penser à autre chose. Or il devient de plus en plus difficile pour
+        les Français de déconnecter du travail.
+        Cela est peut-être votre cas : en ce moment même, vous êtes en congés mais venez de jeter un petit coup d'oeil à
+        votre boîte mail. « Au cas où«, ou parce que votre boss vous l'a demandé.
+        Vous ne pouvez pas, ou ne voulez pas, déconnecter du travail ? Vous n'êtes pas le seul.
+        Seuls 56% des hommes parviennent à se déconnecter pendant les vacances
+        Depuis janvier 2017, la loi autorise le
+
+    </div>
+
+    <textarea id="content"></textarea>
+    <button onclick="saveContent()">Lưu</button>
+    <h1>hien thi ket qua</h1>
+    <p id="output">ket qua</p>
+
+    <script>
+        function saveContent() {
+            const content = document.getElementById("content").value;
+            const output = document.getElementById("output");
+            output.innerText = content;
+            console.log(content); // Xuống dòng trong textarea sẽ thành \n
+        }
+    </script>
+
+</body>
+
+</html>

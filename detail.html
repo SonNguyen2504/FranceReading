@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail de l'Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .back-arrow:hover {
+            color: #007bff;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-blue {
+            background-color: #0055A4;
+            color: white;
+        }
+
+        .btn-white {
+            background-color: #ffffff;
+            color: black;
+            border: 1px solid #ccc;
+        }
+
+        .btn-red {
+            background-color: #EF4135;
+            color: white;
+        }
+        
+        #content {
+            white-space: pre-line;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        #author {
+            text-align: right;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">📖 Lectures en Français</div>
+    <div class="container">
+        <a href="index.html" class="back-arrow">⬅</a>
+        <h1 id="title">Titre de l'Article</h1>
+        <p id="content">Le contenu de l'article s'affichera ici...</p>
+        <p id="author">Auteur de l'article</p>
+
+        <div class="buttons">
+            <button class="btn btn-blue" onclick="goToVerbes()">📖 EXPRESSIONS VERBALES</button>
+            <button class="btn btn-white" onclick="goToTranslate()">📄 TRADUCTION</button>
+            <button class="btn btn-red" onclick="showVocabulary()">📖 VOCABULAIRE EXPLIQUÉ</button>
+        </div>
+    </div>
+
+    <script>
+        // Dữ liệu bài đọc (fix cứng)
+        const articles = {
+            1: { 
+                title: "Vacances : les Français arrivent-ils à déconnecter du travail ?", 
+                content: `Les vacances, c'est fait pour se reposer et penser à autre chose. Or il devient de plus en plus difficile pour les Français de déconnecter du travail.<br>Cela est peut-être votre cas : en ce moment même, vous êtes en congés mais venez de jeter un petit coup d'oeil à votre boîte mail. « Au cas où«, ou parce que votre boss vous l'a demandé.<br>Vous ne pouvez pas, ou ne voulez pas, déconnecter du travail ? Vous n'êtes pas le seul.<br>Seuls 56% des hommes parviennent à se déconnecter pendant les vacances.<br>Depuis janvier 2017, la loi autorise le<br>« droit à la déconnexion«, c'est-à-dire la possibilité pour un salarié de couper totalement sa boîte mail et son téléphone professionnel pendant les soirées ou les vacances. Mais ce droit est-il réellement respecté ? Pour les Français, il apparaît de plus en plus difficile de déconnecter totalement du travail pendant les vacances.<br>Une frontière de plus en plus floue entre travail et repos<br>Une étude menée par Qapa.fr sur plus de 4,5 millions de personnes montre une réelle tendance : ne pas déconnecter pendant les vacances. 61 % des sondés pensent qu'il est de plus en plus difficile de lâcher prise pendant leurs congés.<br>Parmi ceux qui ne lâchent pas leur boîte mail, les hommes sont les grands « gagnants »: 78% des femmes parviennent à déconnecter, contre seulement 56% des hommes.<br>Pourquoi une telle tendance ? Le smartphone n'est pas coupable dans cette liaison avec le monde du travail, pour 70% des sondés. L'accès aux outils de travail est tout de même facilité avec le smartphone, où il suffit d'un clic pour accéder à sa boîte mail.<br>D'autres raisons peuvent expliquer ce phénomène : la forme de l'emploi, tout d'abord : il est plus facile de déconnecter d'un travail manuel que d'un travail intellectuel, qui n'a besoin « que » du cerveau comme outil de travail. De même, l'explosion des freelance et auto entrepreneurs rend plus floue la frontière entre travail et vacances.<br>Pourtant, c'est prouvé, la déconnexion totale pendant les vacances repose davantage et rend plus productif à la rentrée. Dites-le à votre boss !<br>`,
+                author: "Pauline Petit, Conso Globe, 2017"
+            },
+            2: { 
+                title: "Prendre des vacances améliore la productivité", 
+                content: "Plus les salariés prennent des vacances, plus ils améliorent leur productivité, leur investissement et leur épanouissement au travail.<br>Les salariés qui prennent davantage de vacances sont plus productifs au travail que les autres. Ce constat a poussé certaines entreprises à revoir leur méthode de management, en proposant des for in mules de vacances en illimité à leurs employés.<br>Un lien entre vacances et productivité<br>Les vacances sont-elles uniquement synonymes de ralentissement pour la vie des entreprises ? Pas si sûr à en croire plusieurs études, qui montrent qu'au contraire, les salariés sont plus productifs et performants lorsqu'ils prennent des vacances. Aux États-Unis, une étude réalisée pour « Project :Time Off » par la Society for Human Resource Management, a montré que 77% des responsables RH (ressources humaines) et des managers, constatent que leurs employés qui prennent le plus de vacances sont aussi les plus productifs.<br>Par ailleurs, 62% d'entre eux considèrent que si leurs employés prenaient davantage de vacances, ils seraient plus productifs au travail et que l'entreprise fonctionnerait mieux.<br>Les vacances permettent d'accroître l'efficacité au travail<br>Les vacances, loin de représenter une perte de chiffre d'affaires pour les entreprises, permettraient au contraire, d'accroître l'efficacité au travail des salariés, ces derniers profitant de ces périodes de break pour recharger leurs batteries et se reposer.<br>Ce constat s'opère d'ailleurs au niveau mondial: les pays où les périodes de vacances sont les plus longues sont aussi ceux qui affichent les meilleurs taux de productivité, tandis que les pays où les salariés prennent peu de vacances, peuvent certes, présenter des durées de travail hebdomadaire plus élevées, mais affichent des performances moindres en matière de productivité. Ainsi, en France ou en Allemagne, où les salariés bénéficient de 30 à 40 jours de vacances par an, ceux-ci sont plus productifs qu'aux États-Unis, où l'on prend en moyenne 10 jours de vacances par an.<br>Des vacances en illimité pour lutter contre le présentéisme<br>Certaines entreprises, constatant les bénéfices des temps de repos et d'une plus grande prise en compte de la vie personnelle des salariés, ont décidé d'aller plus loin encore, en accordant à leurs employés des vacances en illimité. L'idée est simple : plutôt que de se focaliser sur le présentéisme, ces entreprises permettent à leurs employés de partir en vacances quand ils le souhaitent, à condition qu'ils remplissent les objectifs fixés.<br>Les bienfaits à long terme des vacances<br>Outre un impact sur la productivité du travail, les vacances présentent également des bienfaits à plus long terme, en améliorant la santé des salariés et en contribuant à augmenter leur sensation de bien-être, ce qui au final se reflète sur la bonne marche des entreprises.<br>Là encore, on constate un décalage entre les pays européens et les États-Unis : en Europe, les taux de dépression et les dépenses de santé sont plus faibles qu'outre-Atlantique. De la même façon, en Suède, pays qui se classe à la deuxième position du classement de l'OCDE sur la qualité de vie, les salariés travaillent très peu, voire pas du tout, pendant les deux mois d'été.<br>",
+                author: "Emilia Capitaine, Conso Globe, 2017"
+            },
+            3: { 
+                title: "Running : est-ce efficace de ne courir que le dimanche ?", 
+                content: "Par manque de temps en semaine ou par fatigue, vous êtes adepte du running dominical.<br>Bonne idée ou grossière erreur ? On fait le point.<br>Comme beaucoup, vous êtes une coureuse du dimanche. Parce qu'en rentrant chaque jour du travail, d'une part l'envie de faire du sport et donc de souffrir ne vous effleure que très moyennement l'esprit; d'autre part parce que vos enfants ne savent pas encore lire Tchoupi seuls. Ainsi, vous adoptez le running dominical persuadée d'entretenir votre silhouette et de décompresser.<br>Sauf que... Au risque de décevoir, courir uniquement le dimanche ne permet en aucun cas de se muscler, et encore moins d'améliorer sa condition physique. Au mieux, il nettoie le corps des excès de la semaine, et encore. Le minimum syndical en somme. Le coach sportif William Chanconie l'explique en ces termes : « Quand on ne court que le dimanche, l'organisme considère l'écart de six jours entre les séances comme un accident et ne s'adapte pas. Il entre dans une zone de confort et ne fait plus de progrès, il se dit qu'il n'a pas besoin de développer sa masse musculaire. » En conclusion, si l'objectif est de s'alléger sur la balance, d'augmenter son allure et de muscler cuisses, fesses ou ventre, un minimum de deux running par semaine est nécessaire, trois dans l'idéal.<br>Pour être efficace : courir samedi et dimanche<br>Une seconde... Cela signifie-t-il que celles et ceux qui manquent de temps pour courir en semaine sont voué(e)s à ne jamais atteindre leurs objectifs ? Que nenni. Il est tout à fait possible de faire du sport uniquement le week-end. A condition d'avoir - évidemment - une hygiène de vie relativement équilibrée en parallèle et de transpirer deux fois durant le week-end, samedi et dimanche. En pratique, on s'octroie une séance longue et modérée le samedi, une plus courte et plus intense le dimanche. « Le samedi, on peut courir tranquillement pendant 30 à 40 minutes en fonction de son niveau. Le dimanche, on opte pour la méthode fractionnée : l'alternance entre effort intense sur une courte durée et période de récupération », conseille le professionnel.<br>Concrètement, on s'échauffe durant un quart d'heure grâce à de petites foulées en accélérant vers la fin. Ensuite, on alterne dix sprints de 30 secondes chacun, entrecoupés de 30 secondes de repos complet, en marchant. En fin de séance, on se remet aux foulées pendant dix minutes pour récupérer. « Le fractionné permet un renforcement musculaire complet. Ça vaut surtout pour la sangle abdominale car on contracte ses abdos en courant pour etre plus rapide », ajoute William Chanconie. La séance dominicale étant relativement courte, on peut peaufiner l'affaire avec cinq minutes de gainage : exercice de la planche et de la chaise imaginaire.<br>Pour un maximum d'efficacité, on espace la course du samedi et la séance du dimanche : «L'idéal est de courir le samedi matin et d'effectuer sa séance plus intense le dimanche après-midi ou en début de soirée », indique le coach. Donc si l'on s'endort à cinq heures du matin le samedi soir, inutile de se forcer à faire sa séance de sport à 11 heures le lendemain. Espacez le plus possible pour que l'organisme soit opérationnel. À appliquer dès ce week-end !<br>",
+                author: "Ophélie Ostermann, Le Figaro, 2016" 
+            }
+        };
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        if (articles[articleId]) {
+            document.getElementById('title').innerText = articles[articleId].title;
+            document.getElementById('content').innerHTML = articles[articleId].content;
+            document.getElementById('author').innerText = `Auteur: ${articles[articleId].author}`;
+        } else {
+            document.getElementById('title').innerText = "Article non trouvé";
+            document.getElementById('content').innerText = "Désolé, l'article demandé n'existe pas.";
+        }
+
+        function goToVerbes() {
+            window.location.href = `expression.html?id=${articleId}`;
+        }
+
+        function goToTranslate() {
+            window.location.href = `translate.html?id=${articleId}`;
+        }
+
+        function showVocabulary() {
+            window.location.href = `vocab.html?id=${articleId}`;
+        }
+    </script>
+
+</body>
+
+</html>

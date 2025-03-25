@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0055A4;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0055A4;
+            color: white;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #EF4135;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">📖 Lectures en Français</div>
+    <div class="container">
+        <h1>Vocabulaire</h1>
+        <h2 id="title">Titre de l'Article</h2> <!-- Tiêu đề bài đọc -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Mots</th>
+                    <th>Genre</th>
+                    <th>Sens</th>
+                </tr>
+            </thead>
+            <tbody id="vocab-list">
+                <!-- Dữ liệu sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+        <button class="btn" onclick="goBack()">⬅ Trở về</button>
+    </div>
+
+    <script>
+        // Dữ liệu bài đọc và từ vựng (fix cứng)
+        const articles = {
+            1: { title: "Vacances : les Français arrivent-ils à déconnecter du travail ?" },
+            2: { title: "Prendre des vacances améliore la productivité" },
+            3: { title: "Running : est-ce efficace de ne courir que le dimanche ?" }
+        };
+
+        const vocabData = {
+            1: [
+                { mot: "déconnecter", genre: "v.", sens: "ngắt kết nối, rời xa công việc" },
+                { mot: "boîte mail", genre: "n.f.", sens: "hộp thư điện tử" },
+                { mot: "frontière", genre: "n.f.", sens: "ranh giới" },
+                { mot: "lâcher prise", genre: "v. expr.", sens: "buông bỏ, thư giãn" },
+                { mot: "auto entrepreneur", genre: "n.m.", sens: "người tự kinh doanh" },
+                { mot: "repos", genre: "n.m.", sens: "nghỉ ngơi" },
+                { mot: "productif/productive", genre: "adj.", sens: "năng suất" },
+                { mot: "outil", genre: "n.m.", sens: "công cụ" }
+            ],
+            2: [
+                { mot: "productivité", genre: "n.f.", sens: "năng suất" },
+                { mot: "épanouissement", genre: "n.m.", sens: "sự phát triển cá nhân, sự hạnh phúc" },
+                { mot: "formule", genre: "n.f.", sens: "hình thức, mô hình" },
+                { mot: "batterie", genre: "n.f.", sens: "năng lượng (ẩn dụ: sạc lại năng lượng)" },
+                { mot: "chiffre d’affaires", genre: "n.m.", sens: "doanh thu" },
+                { mot: "présentéisme", genre: "n.m.", sens: "sự có mặt ở nơi làm việc một cách hình thức" },
+                { mot: "bienfait", genre: "n.m.", sens: "lợi ích" },
+                { mot: "à long terme", genre: "loc. adv.", sens: "về lâu dài" }
+            ],
+            3: [
+                { mot: "running dominical", genre: "n.m.", sens: "chạy bộ vào chủ nhật" },
+                { mot: "condition physique", genre: "n.f.", sens: "thể lực" },
+                { mot: "minimum syndical", genre: "n.m.", sens: "mức tối thiểu" },
+                { mot: "zone de confort", genre: "n.f.", sens: "vùng an toàn (ẩn dụ)" },
+                { mot: "hygiène de vie", genre: "n.f.", sens: "lối sống lành mạnh" },
+                { mot: "fractionné", genre: "n.m./adj.", sens: "chạy biến tốc (hoặc: gián đoạn)" },
+                { mot: "gainage", genre: "n.m.", sens: "bài tập giữ cơ thể ở tư thế cố định" },
+                { mot: "sangle abdominale", genre: "n.f.", sens: "cơ vùng bụng" }
+            ]
+        };
+
+        // Lấy ID bài đọc từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        // Hiển thị tiêu đề bài đọc
+        if (articles[articleId]) {
+            document.getElementById('title').innerText = articles[articleId].title;
+        } else {
+            document.getElementById('title').innerText = "Article non trouvé";
+        }
+
+        // Hiển thị danh sách từ vựng
+        const vocabList = document.getElementById("vocab-list");
+        if (vocabData[articleId]) {
+            vocabData[articleId].forEach((item, index) => {
+                let row = `<tr>
+                <td>${index + 1}</td>
+                <td>${item.mot}</td>
+                <td>${item.genre}</td>
+                <td>${item.sens}</td>
+            </tr>`;
+                vocabList.innerHTML += row;
+            });
+        } else {
+            vocabList.innerHTML = "<tr><td colspan='3'>Aucune donnée disponible.</td></tr>";
+        }
+
+        // Nút trở về
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+
+</html>

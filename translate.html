@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0055A4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #EF4135;
+            color: white;
+        }
+
+        #author {
+            text-align: right;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">📖 Lectures en Français</div>
+    <div class="container">
+        <h1>Traduction</h1>
+        <h2 id="title">Titre de l'Article</h2>
+        <p id="translate">Traduction</p>
+        <p id="author">Auteur</p>
+        <button class="btn" onclick="goBack()">⬅ Trở về</button>
+    </div>
+
+    <script>
+        const articles = {
+            1: {
+                title: "Kỳ nghỉ: Người Pháp có thực sự ngắt kết nối với công việc?",
+                translate: "Kỳ nghỉ là khoảng thời gian để nghỉ ngơi và nghĩ về những điều khác. Thế nhưng, ngày càng khó để người Pháp thực sự tách rời khỏi công việc.<br>Có thể bạn cũng như vậy: ngay lúc này, bạn đang trong kỳ nghỉ nhưng vẫn liếc qua hộp thư điện tử của mình. “Phòng khi có việc” hoặc đơn giản vì sếp yêu cầu.<br>Bạn không thể – hoặc không muốn – ngắt kết nối với công việc? Bạn không phải là người duy nhất.<br>Chỉ 56% nam giới có thể ngắt kết nối trong kỳ nghỉ<br>Từ tháng 1 năm 2017, pháp luật đã công nhận “quyền ngắt kết nối”, nghĩa là nhân viên có thể hoàn toàn không kiểm tra email hay sử dụng điện thoại công việc vào buổi tối hoặc trong kỳ nghỉ. Nhưng liệu quyền này có thực sự được tôn trọng? Đối với người Pháp, việc tách biệt hoàn toàn khỏi công việc trong kỳ nghỉ ngày càng trở nên khó khăn.<br>Ranh giới giữa công việc và nghỉ ngơi ngày càng mờ nhạt<br>Một nghiên cứu của Qapa.fr trên hơn 4,5 triệu người cho thấy một xu hướng rõ ràng: không ngắt kết nối hoàn toàn trong kỳ nghỉ. 61% số người được khảo sát cho rằng ngày càng khó để buông bỏ công việc khi đang trong kỳ nghỉ.<br>Trong số những người vẫn kiểm tra hộp thư điện tử, nam giới chiếm tỷ lệ cao nhất: 78% phụ nữ có thể ngắt kết nối, trong khi chỉ 56% nam giới làm được điều này.<br>Tại sao lại có xu hướng này? Theo 70% số người được hỏi, điện thoại thông minh không phải là nguyên nhân chính khiến họ vẫn liên kết với công việc. Dù vậy, các thiết bị này vẫn tạo điều kiện để truy cập công cụ làm việc một cách nhanh chóng – chỉ cần một cú chạm là có thể mở email.<br>Ngoài ra, còn có những nguyên nhân khác: tính chất công việc, chẳng hạn. Việc tách rời khỏi một công việc chân tay dễ dàng hơn nhiều so với một công việc trí óc, vốn chỉ cần đến bộ não. Hơn nữa, sự bùng nổ của nghề tự do (freelance) và những người tự kinh doanh cũng khiến ranh giới giữa công việc và kỳ nghỉ trở nên mờ nhạt hơn.<br>Thế nhưng, đã có nghiên cứu chứng minh rằng việc ngắt kết nối hoàn toàn trong kỳ nghỉ giúp cơ thể được nghỉ ngơi tốt hơn và tăng hiệu suất làm việc khi trở lại. Hãy nói điều này với sếp của bạn!<br>",
+                author: "Pauline Petit, Conso Globe, 2017"
+            },
+            2: {
+                title: "Đi nghỉ giúp nâng cao năng suất lao động",
+                translate: "Nhân viên càng nghỉ phép nhiều, họ càng làm việc hiệu quả hơn, cống hiến nhiều hơn và cảm thấy hài lòng hơn trong công việc.<br>Những người dành nhiều thời gian cho kỳ nghỉ có xu hướng làm việc năng suất hơn so với những người ít nghỉ. Nhận thức này đã khiến một số doanh nghiệp thay đổi phương pháp quản lý, thậm chí đưa ra chính sách nghỉ phép không giới hạn cho nhân viên.<br>Mối quan hệ giữa kỳ nghỉ và hiệu suất làm việc<br>Liệu kỳ nghỉ có làm chậm tiến trình kinh doanh? Không hẳn, theo nhiều nghiên cứu chỉ ra rằng nhân viên có xu hướng làm việc hiệu quả hơn khi họ được nghỉ phép đầy đủ.<br>Tại Hoa Kỳ, một nghiên cứu của Project: Time Off do Hiệp hội Quản lý Nguồn nhân lực (Society for Human Resource Management) thực hiện cho thấy 77% các nhà quản lý nhân sự nhận thấy những nhân viên nghỉ phép nhiều hơn thường có năng suất làm việc cao hơn. Ngoài ra, 62% tin rằng nếu nhân viên được nghỉ phép nhiều hơn, họ sẽ làm việc hiệu quả hơn và doanh nghiệp sẽ vận hành tốt hơn.<br>Kỳ nghỉ giúp tăng hiệu quả công việc<br>Thay vì làm giảm doanh thu của doanh nghiệp, kỳ nghỉ thực tế giúp nhân viên làm việc hiệu quả hơn, vì họ có thời gian nghỉ ngơi và nạp lại năng lượng.<br>Xu hướng này được quan sát trên toàn thế giới. Những quốc gia có thời gian nghỉ dài hơn thường đạt mức năng suất lao động cao hơn. Trong khi đó, những nước có thời gian làm việc dài hơn có thể có số giờ làm việc cao nhưng năng suất lại thấp hơn.<br>Ví dụ, tại Pháp và Đức, nơi nhân viên có 30–40 ngày nghỉ phép mỗi năm, năng suất lao động vẫn cao hơn so với Hoa Kỳ, nơi người lao động chỉ có trung bình 10 ngày nghỉ mỗi năm.<br>Chính sách nghỉ phép không giới hạn để chống lại văn hóa “làm cho có”<br>Một số công ty, nhận thấy lợi ích của thời gian nghỉ và sự cân bằng giữa công việc và cuộc sống cá nhân, đã đưa ra chính sách nghỉ phép không giới hạn.<br>Nguyên tắc rất đơn giản: thay vì tập trung vào sự có mặt tại nơi làm việc (présentéisme), các công ty cho phép nhân viên nghỉ phép bất cứ khi nào họ muốn, miễn là họ hoàn thành các mục tiêu được giao.<br>Lợi ích lâu dài của kỳ nghỉ<br>Ngoài tác động tích cực đến năng suất làm việc, kỳ nghỉ còn mang lại những lợi ích lâu dài. Việc nghỉ ngơi giúp cải thiện sức khỏe thể chất và tinh thần của nhân viên, đồng thời tăng cảm giác hạnh phúc, từ đó góp phần nâng cao hiệu quả hoạt động của doanh nghiệp.<br>Điều này cũng lý giải sự khác biệt giữa châu Âu và Hoa Kỳ. Ở châu Âu, tỷ lệ trầm cảm và chi phí y tế thấp hơn so với Hoa Kỳ. Tại Thụy Điển – quốc gia đứng thứ hai trong bảng xếp hạng chất lượng cuộc sống của OECD – nhân viên hầu như không làm việc trong hai tháng mùa hè.<br>",
+                author: "Emilia Capitaine, Conso Globe, 2017"
+            },
+            3: {
+                title: "Chạy bộ: Chỉ chạy vào Chủ nhật có hiệu quả không?",
+                translate: 'Vì không có thời gian trong tuần hoặc do mệt mỏi, bạn chọn cách chạy bộ vào Chủ nhật.<br>Đó là một ý tưởng hay hay một sai lầm nghiêm trọng? Hãy cùng phân tích.<br>Giống như nhiều người khác, bạn là một "người chạy bộ Chủ nhật". Sau mỗi ngày làm việc, mong muốn vận động và chịu đựng sự mệt mỏi chỉ thoáng qua trong tâm trí bạn. Thêm vào đó, con bạn vẫn chưa thể tự đọc sách Tchoupi. Vì vậy, bạn chọn chạy bộ vào Chủ nhật với hy vọng duy trì vóc dáng và giải tỏa căng thẳng.<br>Nhưng... Có thể bạn sẽ thất vọng khi biết rằng chỉ chạy vào Chủ nhật không giúp bạn xây dựng cơ bắp, càng không thể cải thiện thể lực. Tốt nhất, nó chỉ giúp cơ thể loại bỏ phần nào những dư thừa trong tuần, và cũng không hẳn là hiệu quả. Một mức tối thiểu mà thôi.<br>Huấn luyện viên thể thao William Chanconie giải thích: "Khi chỉ chạy vào Chủ nhật, cơ thể xem khoảng cách sáu ngày giữa các buổi tập như một sự gián đoạn bất thường và không thích nghi được. Nó sẽ rơi vào vùng an toàn và ngừng tiến bộ, vì không cảm thấy cần thiết phải phát triển khối cơ."<br>Kết luận: Nếu mục tiêu của bạn là giảm cân, cải thiện tốc độ hoặc săn chắc đùi, mông, bụng, thì cần ít nhất hai buổi chạy mỗi tuần, lý tưởng nhất là ba buổi.<br>Để đạt hiệu quả: Chạy vào cả Thứ Bảy và Chủ Nhật<br>Chờ đã... Điều đó có nghĩa là những người không có thời gian chạy bộ trong tuần sẽ không bao giờ đạt được mục tiêu của mình? Không hề! Hoàn toàn có thể tập thể thao chỉ vào cuối tuần, miễn là bạn duy trì một lối sống tương đối cân bằng và vận động hai lần vào cuối tuần, vào Thứ Bảy và Chủ Nhật.<br>Cụ thể:<br>Thứ Bảy: Chạy với tốc độ vừa phải trong 30-40 phút, tùy theo khả năng.<br>Chủ Nhật: Chạy theo phương pháp chạy biến tốc (interval training) – xen kẽ giữa cường độ cao và thời gian phục hồi.<br>Huấn luyện viên khuyên: "Bắt đầu bằng 15 phút khởi động với những bước chạy nhỏ, tăng tốc dần vào cuối. Sau đó, thực hiện 10 lần chạy nước rút trong 30 giây, mỗi lần xen kẽ với 30 giây đi bộ. Cuối buổi tập, chạy nhẹ thêm 10 phút để phục hồi."<br>Phương pháp chạy biến tốc giúp tăng cường cơ bắp toàn diện, đặc biệt là vùng bụng, vì khi chạy nhanh, bạn sẽ phải siết chặt cơ bụng để tăng tốc. Để tối ưu, hãy kết thúc buổi tập Chủ Nhật bằng 5 phút tập plank và ngồi tường để tăng sức bền cơ bắp.<br>Sắp xếp thời gian hợp lý để đạt hiệu quả tối đa<br>Hãy giãn cách giữa hai buổi tập.<br>"Lý tưởng nhất là chạy vào sáng Thứ Bảy và thực hiện buổi tập cường độ cao vào chiều hoặc tối Chủ Nhật," huấn luyện viên nhấn mạnh. Vì vậy, nếu bạn thức khuya đến 5 giờ sáng vào tối Thứ Bảy, thì đừng ép bản thân tập luyện vào 11 giờ sáng hôm sau. Hãy để cơ thể có đủ thời gian phục hồi để đạt hiệu suất tốt nhất.<br>Áp dụng ngay từ cuối tuần này!<br>',
+                author: "Ophélie Ostermann, Le Figaro, 2016"
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        if (articles[articleId]) {
+            document.getElementById('title').innerText = articles[articleId].title;
+            document.getElementById('translate').innerHTML = articles[articleId].translate;
+            document.getElementById('author').innerText = articles[articleId].author;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+
+</html>

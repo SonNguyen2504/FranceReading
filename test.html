@@ -1,43 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bienvenue - Lectures en Français</title>
     <style>
-        .article-content {
-            white-space: pre-line;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .welcome-container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .filter-container {
+            margin-top: 30px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #0055A4;
+            color: white;
+            border-radius: 5px;
+            margin-left: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="article-content">
-        Les vacances, c'est fait pour se reposer et penser à autre chose. Or il devient de plus en plus difficile pour
-        les Français de déconnecter du travail.
-        Cela est peut-être votre cas : en ce moment même, vous êtes en congés mais venez de jeter un petit coup d'oeil à
-        votre boîte mail. « Au cas où«, ou parce que votre boss vous l'a demandé.
-        Vous ne pouvez pas, ou ne voulez pas, déconnecter du travail ? Vous n'êtes pas le seul.
-        Seuls 56% des hommes parviennent à se déconnecter pendant les vacances
-        Depuis janvier 2017, la loi autorise le
+    <div class="navbar">📖 Bienvenue sur Lectures en Français</div>
 
+    <div class="welcome-container">
+        <h1>Découvrez des lectures adaptées à vos intérêts !</h1>
+        <p>Choisissez une catégorie pour commencer votre lecture :</p>
+
+        <div class="filter-container">
+            <select id="categorySelect">
+                <option value="">Sélectionnez une catégorie</option>
+                <option value="vacances">Vacances</option>
+                <option value="sports">Sports</option>
+                <option value="animaux">Animaux</option>
+                <option value="monde_du_travail">Monde du travail</option>
+                <option value="ecole">École</option>
+                <option value="adolescents">Adolescents</option>
+                <option value="alimentation">Alimentation</option>
+                <option value="transport">Transport</option>
+                <option value="reseaux_sociaux">Réseaux sociaux</option>
+                <option value="education">Éducation</option>
+            </select>
+            <button onclick="goToCategory()">Explorer</button>
+        </div>
     </div>
 
-    <textarea id="content"></textarea>
-    <button onclick="saveContent()">Lưu</button>
-    <h1>hien thi ket qua</h1>
-    <p id="output">ket qua</p>
-
     <script>
-        function saveContent() {
-            const content = document.getElementById("content").value;
-            const output = document.getElementById("output");
-            output.innerText = content;
-            console.log(content); // Xuống dòng trong textarea sẽ thành \n
+        function goToCategory() {
+            const category = document.getElementById('categorySelect').value;
+            if (category) {
+                window.location.href = `category.html?category=${category}`;
+            } else {
+                alert("Veuillez sélectionner une catégorie !");
+            }
         }
     </script>
-
 </body>
 
 </html>

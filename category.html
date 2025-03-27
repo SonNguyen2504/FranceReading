@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catégorie - Lectures en Français</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            gap: 30px;
+        }
+
+        .reading-box {
+            width: 220px;
+            height: 220px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reading-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .reading-box:nth-child(1) {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+        }
+
+        .reading-box:nth-child(2) {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            color: #333;
+        }
+
+        .reading-box:nth-child(3) {
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            color: #333;
+        }
+
+        #categoryTitle {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">📖 Lectures en Français</div>
+
+    <h1 id="categoryTitle">Catégorie : </h1>
+
+    <div class="container" id="articlesContainer"></div>
+
+    <script>
+        // Dữ liệu bài đọc theo thể loại (fix cứng)
+        const articlesByCategory = {
+            "vacances": [
+                { id: 1, title: "Vacances : les Français arrivent-ils à déconnecter du travail ?" },
+                { id: 2, title: "Prendre des vacances améliore la productivité" },
+                { id: 3, title: "Running : est-ce efficace de ne courir que le dimanche ?" }
+            ],
+            "sports": [
+                { id: 4, title: "Randonnées urbaines, la nouvelle mode" },
+                { id: 5, title: "Y a-t-il des sports de filles et des sports de garçons?" },
+                { id: 6, title: "L'activité physique améliore les performances scolaires" }
+            ],
+            "animaux": [
+                { id: 7, title: "Le bio pour les chiens, on essaye ou pas ?" },
+                { id: 8, title: "La population de loups augmente en France" },
+                { id: 9, title: "Les Français préfèrent toujours les chats aux chiens" }
+            ],
+            "monde_du_travail": [
+                { id: 10, title: "Mon collègue de boulot est un robot" },
+                { id: 11, title: "Les stages ne suffisent pas à décrocher un emploi" },
+                { id: 12, title: "Choisir de travailler le week-end n'est pas une tare" }
+            ],
+            "ecole": [
+                { id: 13, title: "L'école commence trop tot le matin et mine ainsi le succes scolaire" },
+                { id: 14, title: "Les devoirs à la maison sont bénéfiques pour s'entraîner" },
+                { id: 15, title: "Ces lycéens qui passent leurs vacances à l'école" }
+            ],
+            "adolescents": [
+                { id: 16, title: "En Australie, sept adolescents arrêtés dans des opérations antiterroristes" },
+                { id: 17, title: "Faut-il prendre une année sabbatique après le bac ?" },
+                { id: 18, title: "Un jeune sur dix en grande difficulté de lecture" }
+            ],
+            "alimentation": [
+                { id: 19, title: "Mieux vaut manger moins de viandes et plus de légumineuses" },
+                { id: 20, title: "Sandwich: le jambon-beurre perd du terrain" },
+                { id: 21, title: "Cuisiner, c'est bon pour notre santé mentale !" }
+            ],
+            "transport": [
+                { id: 22, title: "Le port du casque en voiture bientôt obligatoire à New York?" },
+                { id: 23, title: "Le vélo, transport d’avenir?" },
+                { id: 24, title: "En Écosse, il est désormais interdit de fumer en voiture en présence d'un enfant" }
+            ],
+            "reseaux_sociaux": [
+                { id: 25, title: "Désormais, le bac se révise sur Youtube" },
+                { id: 26, title: "Les smartphones nuisent aux relations sociales des ados" },
+                { id: 27, title: "Plus d’un jeune sur deux s’est déjà senti harcelé sur les réseaux sociaux" }
+            ],
+            "education": [
+                { id: 28, title: "A Paris, des écoles se mobilisent contre les fermetures de classes prévues à la rentrée prochaine" },
+                { id: 29, title: "Education : les pauvres mis au ban" },
+                { id: 30, title: "Education à la sexualité à l’école : le projet n’est, «en l’état, pas acceptable», fustige le ministre délégué" }
+            ]
+        };
+
+        // Lấy category từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+
+        // Cập nhật tiêu đề
+        if (category && articlesByCategory[category]) {
+            document.getElementById('categoryTitle').innerText = `Catégorie : ${category.replace(/_/g, ' ')}`;
+
+            const articles = articlesByCategory[category];
+            const container = document.getElementById('articlesContainer');
+
+            articles.forEach(article => {
+                const div = document.createElement('div');
+                div.className = "reading-box";
+                div.innerText = article.title;
+                div.onclick = () => window.location.href = `detail.html?id=${article.id}`;
+                container.appendChild(div);
+            });
+        } else {
+            document.getElementById('categoryTitle').innerText = "Catégorie non trouvée";
+        }
+    </script>
+</body>
+
+</html>
